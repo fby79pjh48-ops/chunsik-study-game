@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#20a84a">
+<title>춘식이 공부게임</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+<header class="hero">
+  <div><h1>📚 춘식이 공부게임</h1><p>사진 찍고 → 암기하고 → 문제 풀자!</p></div>
+  <div class="xp">⭐ <b id="xp">0</b> XP</div>
+</header>
+
+<section id="home" class="screen">
+  <div class="card">
+    <h2>과목</h2>
+    <div class="subjects">
+      <button class="subject active" data-subject="역사">🏛️ 역사</button>
+      <button class="subject" data-subject="국어">📖 국어</button>
+      <button class="subject" data-subject="사회">🌏 사회</button>
+      <button class="subject" data-subject="영어">🇺🇸 영어</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>공부 자료</h2>
+    <label class="camera" for="photo">📷 사진 찍기 / 사진 선택</label>
+    <input id="photo" type="file" accept="image/*" capture="environment">
+    <img id="preview" alt="선택한 공부자료 사진">
+    <p id="ocrStatus" class="status hidden"></p>
+    <textarea id="notes" placeholder="사진에서 읽은 내용이 여기에 들어옵니다. 직접 붙여넣어도 됩니다."></textarea>
+    <button id="makeStudy" class="primary">🧠 공부자료 만들기</button>
+  </div>
+</section>
+
+<section id="study" class="screen hidden">
+  <div class="card">
+    <div class="tags"><span id="subjectTag"></span><span>🧠 암기 카드</span></div>
+    <h2>핵심 내용</h2>
+    <p id="summary"></p>
+    <h3>🔑 핵심 포인트</h3>
+    <ul id="points"></ul>
+    <button id="toDifficulty" class="primary">문제 풀기 →</button>
+  </div>
+</section>
+
+<section id="difficulty" class="screen hidden">
+  <div class="card">
+    <h2>난이도 선택</h2>
+    <div class="difficulties">
+      <button class="difficulty active" data-level="하">🟢 하<small>기본 기억</small></button>
+      <button class="difficulty" data-level="중">🟡 중<small>응용</small></button>
+      <button class="difficulty" data-level="상">🔴 상<small>심화</small></button>
+    </div>
+    <button id="startQuiz" class="primary">문제 시작 →</button>
+  </div>
+</section>
+
+<section id="quiz" class="screen hidden">
+  <div class="card">
+    <div class="quiztop"><span id="quizTag"></span><span><b id="qnum">1</b>/6</span></div>
+    <div class="bar"><div id="bar"></div></div>
+    <div id="question" class="question"></div>
+    <div id="choices"></div>
+    <p id="feedback" class="feedback"></p>
+    <button id="next" class="primary hidden">다음 문제 →</button>
+  </div>
+</section>
+
+<section id="result" class="screen hidden">
+  <div class="card center">
+    <h2>🎉 학습 완료!</h2>
+    <p id="resultText"></p>
+    <button id="retry" class="primary">다시 풀기</button>
+    <button id="newStudy" class="secondary">새 공부자료</button>
+  </div>
+</section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
